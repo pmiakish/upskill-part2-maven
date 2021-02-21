@@ -41,7 +41,6 @@ public class FileController {
     public static Path getDIRECTORY() {
         return DIRECTORY;
     }
-
     public static Path getCONFIG() {
         return CONFIG;
     }

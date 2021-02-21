@@ -8,15 +8,12 @@ public class Configuration {
 
     public Configuration() {
     }
-
     public String getSuffix() {
         return suffix;
     }
-
     public String[] getFileNames() {
         return fileNames;
     }
-
     @Override
     public String toString() {
         return "Configuration{" +
