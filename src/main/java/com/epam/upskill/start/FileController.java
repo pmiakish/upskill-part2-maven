@@ -1,6 +1,6 @@
 package com.epam.upskill.start;
 
-import com.epam.upskill.service.FileWorker;
+import com.epam.upskill.service.file.FileWorker;
 import com.epam.upskill.util.init.Configuration;
 import com.epam.upskill.util.validate.FileChecker;
 import com.google.gson.Gson;
@@ -24,7 +24,7 @@ public class FileController {
             if (FileChecker.checkFilesExisting(fileNames)) {
                 System.out.println("All specified files are exist. Ready to work...");
             } else {
-                throw new FileNotFoundException("Specified file or files not found!");
+                throw new FileNotFoundException("Specified file or files are not found!");
             }
             for (String fileName : fileNames) {
                 FileWorker.renameFile(DIRECTORY.resolve(fileName), DIRECTORY.resolve(suffix.concat(fileName)));
