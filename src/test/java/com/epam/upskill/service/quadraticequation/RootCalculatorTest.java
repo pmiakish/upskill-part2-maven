@@ -55,4 +55,10 @@ public class RootCalculatorTest {
         RootCalculator.calculate(coefficientsHolder);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowIllegalArgumentExceptionWhenAllValuesEqualZero() {
+        QuadraticEquationCoefficientsHolder coefficientsHolder = new QuadraticEquationCoefficientsHolder(0.0, 0.0, 0.0);
+        RootCalculator.calculate(coefficientsHolder);
+    }
+
 }
