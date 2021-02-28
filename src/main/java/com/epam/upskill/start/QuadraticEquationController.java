@@ -43,8 +43,7 @@ public class QuadraticEquationController {
                             throw new IllegalArgumentException("Number of given values do not equals to number of " +
                                     "coefficients!");
                         }
-                    }
-                    catch (IllegalArgumentException ex) {
+                    } catch (IllegalArgumentException ex) {
                         ex.printStackTrace();
                     }
                 }
