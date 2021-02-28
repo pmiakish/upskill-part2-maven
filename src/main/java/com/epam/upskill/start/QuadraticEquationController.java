@@ -43,18 +43,14 @@ public class QuadraticEquationController {
                             throw new IllegalArgumentException("Number of given values do not equals to number of " +
                                     "coefficients!");
                         }
-                    } catch (NumberFormatException ex) {
-                        ex.printStackTrace();
-                    } catch (IllegalArgumentException ex) {
+                    }
+                    catch (IllegalArgumentException ex) {
                         ex.printStackTrace();
                     }
                 }
             } else {
                 throw new FileNotFoundException("Specified file is not found!");
             }
-        }
-        catch (FileNotFoundException ex) {
-            ex.printStackTrace();
         }
         catch (IOException ex) {
             ex.printStackTrace();

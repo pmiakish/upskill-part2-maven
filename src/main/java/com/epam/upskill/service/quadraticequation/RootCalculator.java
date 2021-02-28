@@ -20,9 +20,12 @@ public class RootCalculator {
     }
 
     private static double[] findTwoRoots(QuadraticEquationCoefficientsHolder coefficientsHolder, double discriminant) {
+        double discriminantSqrt = Math.sqrt(discriminant);
+        double divisor = 2 * coefficientsHolder.getAValue();
+        double negativeBValue = -coefficientsHolder.getBValue();
         double[] roots = new double[2];
-        roots[0] = (-coefficientsHolder.getBValue() + Math.sqrt(discriminant)) / (2 * coefficientsHolder.getAValue());
-        roots[1] = (-coefficientsHolder.getBValue() - Math.sqrt(discriminant)) / (2 * coefficientsHolder.getAValue());
+        roots[0] = (negativeBValue + discriminantSqrt) / divisor;
+        roots[1] = (negativeBValue - discriminantSqrt) / divisor;
         return roots;
     }
 
