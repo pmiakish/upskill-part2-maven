@@ -28,8 +28,8 @@ public class QuadraticEquationController {
             Path coefficientsPath = DIRECTORY.resolve(Paths.get(configuration.getCoefficientsPath()));
             if (Files.exists(coefficientsPath)) {
                 List<String> coefficientsLines = Files.readAllLines(coefficientsPath);
-                for (String coefficientsLine : coefficientsLines) {
-                    String[] coefficientsSet = coefficientsLine.split(" ");
+                for (int i = 0; i < coefficientsLines.size(); i++) {
+                    String[] coefficientsSet = coefficientsLines.get(i).split(" ");
                     try {
                         if (coefficientsSet.length == NUMBER_OF_COEFFICIENTS) {
                             QuadraticEquationCoefficientsHolder coefficientsHolder = new
@@ -40,8 +40,9 @@ public class QuadraticEquationController {
                             System.out.println((roots != null) ? "Roots: " + Arrays.toString(roots) + "\n":
                                     "There are no roots!\n");
                         } else {
-                            throw new IllegalArgumentException("Number of given values do not equals to number of " +
-                                    "coefficients!");
+                            throw new IllegalArgumentException("In the line #" + i + ", number of given coefficient " +
+                                    "values is " + coefficientsSet.length + ", but expected number is " +
+                                    NUMBER_OF_COEFFICIENTS + "!");
                         }
                     } catch (IllegalArgumentException ex) {
                         ex.printStackTrace();
