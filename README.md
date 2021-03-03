@@ -59,4 +59,3 @@ The application uses the Log4j 2 dependency for logging. It writes to a log file
 - exceptions throwing information 
     
 ***
-
