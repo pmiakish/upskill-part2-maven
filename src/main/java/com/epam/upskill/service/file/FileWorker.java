@@ -1,4 +1,4 @@
-package com.epam.upskill.service;
+package com.epam.upskill.service.file;
 
 import java.io.IOException;
 import java.nio.file.Files;
