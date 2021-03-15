@@ -34,11 +34,28 @@ It is a java application that that solves a quadratic equation.
 - It throws IllegalArgumentException in the case the value of 'a'-coefficient is zero
 - RootCalculatorTest.java has a set of JUnit methods which ensure that:
 	- method works fine in general cases: two existing roots, one exiting root or no roots
-	- method works correctly if some of coefficients equal zero
+	- method works correctly if some coefficients equal zero
 	- method works correctly in special cases (like when 'a'-coefficient or all coefficients equal zero)
 
 #### Launching
 
 _start/QuadraticEquationController.java_
 
+***
+
+#### Module 4. SuffixingApp Logging
+
+This module adds logging to SuffixingApp (refer to the application from module 2).
+
+#### Details:
+
+The application uses the Log4j 2 dependency for logging. It writes to a log file following information:
+- application startup information
+- configuration reading information 
+- file checking information
+- renaming process information
+- some summary information (e.g. a number of existing files)
+- application shutdown information
+- exceptions throwing information 
+    
 ***
