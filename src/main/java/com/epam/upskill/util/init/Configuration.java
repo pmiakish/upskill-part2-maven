@@ -1,10 +1,20 @@
 package com.epam.upskill.util.init;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 import java.util.Arrays;
 
+@XmlType(name = "configuration")
+@XmlRootElement
 public class Configuration {
+    @XmlElement(name = "suffix")
     private String suffix;
+    @XmlElementWrapper(name = "fileNames")
+    @XmlElement(name = "fileName")
     private String[] fileNames;
+    @XmlElement(name = "coefficientsPath")
     private String coefficientsPath;
 
     public Configuration() {

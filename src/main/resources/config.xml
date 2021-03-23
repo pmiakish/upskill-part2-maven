@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <suffix>sfx_</suffix>
+  <fileNames>
+    <fileName>first_file.txt</fileName>
+	<fileName>second_file.txt</fileName>
+    <fileName>third_file.txt</fileName>
+  </fileNames>
+  <coefficientsPath>coefficients.txt</coefficientsPath>
+</configuration>

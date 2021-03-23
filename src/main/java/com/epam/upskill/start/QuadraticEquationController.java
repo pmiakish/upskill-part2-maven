@@ -2,29 +2,36 @@ package com.epam.upskill.start;
 
 import com.epam.upskill.entity.QuadraticEquationCoefficientsHolder;
 import com.epam.upskill.service.quadraticequation.RootCalculator;
+import com.epam.upskill.util.init.ConfigReader;
 import com.epam.upskill.util.init.Configuration;
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
+import jakarta.xml.bind.JAXBException;
+import org.xml.sax.SAXException;
+
+import javax.xml.XMLConstants;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class QuadraticEquationController {
 
     private static final Path DIRECTORY = Paths.get("src/main/resources/");
-    private static final Path CONFIG = DIRECTORY.resolve("config.json");
+    private static final Path CONFIG = DIRECTORY.resolve("config.xml");
     private static final int NUMBER_OF_COEFFICIENTS = 3;
 
     public static void main(String[] args) {
-        Gson gson = new Gson();
-        try (FileReader fileReader = new FileReader(CONFIG.toString())) {
-            JsonReader jsonReader = new JsonReader(fileReader);
-            Configuration configuration = gson.fromJson(jsonReader, Configuration.class);
+        try {
+            Configuration configuration = Objects.requireNonNull(ConfigReader.read(CONFIG), "Check config path");
             Path coefficientsPath = DIRECTORY.resolve(Paths.get(configuration.getCoefficientsPath()));
             if (Files.exists(coefficientsPath)) {
                 List<String> coefficientsLines = Files.readAllLines(coefficientsPath);
@@ -52,7 +59,7 @@ public class QuadraticEquationController {
                 throw new FileNotFoundException("Specified file is not found!");
             }
         }
-        catch (IOException ex) {
+        catch (IOException | NullPointerException | JAXBException ex) {
             ex.printStackTrace();
         }
     }
