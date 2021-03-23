@@ -18,28 +18,22 @@ public class ConfigReader {
     private static final String XML_EXTENSION_PATTERN = ".*\\.xml$";
     private static final Logger LOGGER = LogManager.getLogger(FileController.class);
 
-    public static Configuration read (Path configPath) throws IllegalArgumentException, JAXBException,
-            JsonParseException {
+    public static Configuration read(final Path CONFIG_PATH) throws  IllegalArgumentException, IOException,
+            JAXBException, JsonParseException {
         Configuration configuration = null;
-        if (configPath.toString().matches(JSON_EXTENSION_PATTERN)) {
+        if (CONFIG_PATH.toString().matches(JSON_EXTENSION_PATTERN)) {
             Gson gson = new Gson();
-            try (FileReader fileReader = new FileReader(configPath.toString())) {
+            try (FileReader fileReader = new FileReader(CONFIG_PATH.toString())) {
                 JsonReader jsonReader = new JsonReader(fileReader);
                 configuration = gson.fromJson(jsonReader, Configuration.class);
                 LOGGER.debug("Read configuration from JSON: {}", configuration);
-            } catch (IOException ex) {
-                LOGGER.error("Cannot read configuration from JSON", ex);
-                ex.printStackTrace();
             }
-        } else if (configPath.toString().matches(XML_EXTENSION_PATTERN)) {
-            try (FileReader fileReader = new FileReader(configPath.toString())) {
+        } else if (CONFIG_PATH.toString().matches(XML_EXTENSION_PATTERN)) {
+            try (FileReader fileReader = new FileReader(CONFIG_PATH.toString())) {
                 JAXBContext context = JAXBContext.newInstance(Configuration.class);
                 Unmarshaller unmarshaller = context.createUnmarshaller();
                 configuration = (Configuration) unmarshaller.unmarshal(fileReader);
                 LOGGER.debug("Read configuration from XML: {}", configuration);
-            } catch (IOException ex) {
-                LOGGER.error("Cannot read configuration from XML", ex);
-                ex.printStackTrace();
             }
         } else {
             throw new IllegalArgumentException("Invalid name of configuration file!");
