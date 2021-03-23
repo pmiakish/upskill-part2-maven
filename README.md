@@ -15,7 +15,7 @@ It is a java application that refers to a config file and renames a set of files
 - It throws FileNotFoundException in the case when the file or files do not exist
 - It prints the results of the renaming in console in the following way: _"old_name -> new_name"_
 
-The application uses the Log4j 2 dependency for logging. It writes to both text and JSON log files  following information:
+The application uses the Log4j 2 dependency for logging. It writes to both text and JSON log files following information:
 - application startup information
 - configuration reading information 
 - file checking information
@@ -24,6 +24,8 @@ The application uses the Log4j 2 dependency for logging. It writes to both text 
 - application shutdown information
 - exceptions throwing information 
 - execution time
+
+When renaming is finished the application prints a XML-based document of completed actions. It contains a config file name, execution time, a list of files with old and new names as well as a timestamp.
 
 #### Launching
 
