@@ -13,17 +13,17 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 public class XMLValidator {
-    public static void validate(Path pathToXML, Path pathToXSD) throws SAXException, IOException {
-        Source xmlSource = new StreamSource(new File(pathToXML.toString()));
+    public static void validate(final Path PATH_TO_XML, final Path PATH_TO_XSD) throws SAXException, IOException {
+        Source xmlSource = new StreamSource(new File(PATH_TO_XML.toString()));
         SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        Schema schema = schemaFactory.newSchema(new File(pathToXSD.toString()));
+        Schema schema = schemaFactory.newSchema(new File(PATH_TO_XSD.toString()));
         Validator validator = schema.newValidator();
         validator.validate(xmlSource);
     }
-    public static void validate(DOMSource domSource, Path pathToXSD) throws SAXException, IOException {
+    public static void validate(final DOMSource DOM_SOURCE, final Path PATH_TO_XSD) throws SAXException, IOException {
         SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        Schema schema = schemaFactory.newSchema(new File(pathToXSD.toString()));
+        Schema schema = schemaFactory.newSchema(new File(PATH_TO_XSD.toString()));
         Validator validator = schema.newValidator();
-        validator.validate(domSource);
+        validator.validate(DOM_SOURCE);
     }
 }
