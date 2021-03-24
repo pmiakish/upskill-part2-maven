@@ -4,18 +4,28 @@ UpSkill-part2-maven
 
 ***
 
-#### Module 2. SuffixingApp With Maven
+#### SuffixingApp
 
-It is a java application that refers to a config file and renames a set of files and renames them adding a suffix specified in the same config.
+It is a java application that refers to a config file and renames a set of files adding a suffix specified in the same config.
 
 #### Details:
 
-- Application reads a json-config file on the startup
-- Then it renames each file adding a suffix from the config to its name if files are exist
-- It throws FileNotFoundException in the case the file or files do not exist
-- It prints the results of the renaming in the following way:
+- The application reads a JSON or XML config file on the startup
+- Then it renames each file adding a suffix from the config to its name, if all the specified files are exist
+- It throws FileNotFoundException in the case when the file or files do not exist
+- It prints the results of the renaming in console in the following way: _"old_name -> new_name"_
 
-_old_name -> new_name_
+The application uses the Log4j 2 dependency for logging. It writes to both text and JSON log files following information:
+- application startup information
+- configuration reading information 
+- file checking information
+- renaming process information
+- some summary information (e.g. a number of existing files)
+- application shutdown information
+- exceptions throwing information 
+- execution time
+
+When renaming is finished the application prints a XML-based document of completed actions. It contains a config file name, execution time, a list of files with old and new names as well as a timestamp.
 
 #### Launching
 
@@ -23,7 +33,7 @@ _start/FileController.java_
 
 ***
 
-#### Module 3. Testing Quadratic Equation
+#### Testing Quadratic Equation
 
 It is a java application that that solves a quadratic equation.
 
@@ -40,22 +50,3 @@ It is a java application that that solves a quadratic equation.
 #### Launching
 
 _start/QuadraticEquationController.java_
-
-***
-
-#### Module 4. SuffixingApp Logging
-
-This module adds logging to SuffixingApp (refer to the application from module 2).
-
-#### Details:
-
-The application uses the Log4j 2 dependency for logging. It writes to a log file following information:
-- application startup information
-- configuration reading information 
-- file checking information
-- renaming process information
-- some summary information (e.g. a number of existing files)
-- application shutdown information
-- exceptions throwing information 
-    
-***
